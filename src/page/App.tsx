@@ -1,14 +1,9 @@
 import React from 'react';
 import './App.css';
-
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
-import SignUp from './SignUp';
 import {Auth} from 'aws-amplify';
 
 import UserContext from '../context/UserContext'
-import SignIn from './SignIn';
-import Confirm from './Confirm';
-import MyPage from './MyPage';
+import AppRouter from '../Router';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState<null | {}>(null);
@@ -41,21 +36,7 @@ function App() {
       isLoaded: isLoaded
     }}>
       <div className="App">
-        <Router>
-          {
-            currentUser === null ?
-              <>
-                <Redirect path={'/'} to={'/signup'}/>
-                <Route path={'/signup'} component={SignUp}/>
-                <Route path={'/confirm'} component={Confirm}/>
-                <Route path={'/signin'} component={SignIn}/>
-              </>
-            : <>
-                <Redirect path={'/'} to={'/mypage'}/>
-                <Route path={'/mypage'} component={MyPage}/>
-              </>
-          }
-        </Router>
+        <AppRouter />
       </div>
     </UserContext.Provider>
   );
