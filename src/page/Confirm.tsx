@@ -1,7 +1,7 @@
 import React from 'react';
 import {Auth} from 'aws-amplify';
-import {SignUpInfoKey, SignUpInfoType} from '../service/auth.service';
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
+import {SignUpInfoKey, SignUpInfoType} from '../auth';
 
 const Confirm = () => {
   const history = useHistory();
@@ -36,7 +36,8 @@ const Confirm = () => {
     <div>
       <h2>Confirm</h2>
       <input type="text" placeholder='Username' onChange={event => handleChange('username', event.target.value)}/>
-      <input type="text" placeholder='Confirmation Code' onChange={event => handleChange('authCode', event.target.value)}/>
+      <input type="text" placeholder='Confirmation Code'
+             onChange={event => handleChange('authCode', event.target.value)}/>
       <div>
         <button onClick={handleConfirmSignUp}>confirm</button>
       </div>

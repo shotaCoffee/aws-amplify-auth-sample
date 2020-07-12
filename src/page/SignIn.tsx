@@ -1,7 +1,7 @@
 import React from 'react';
 import {Auth} from 'aws-amplify';
-import {SignUpInfoKey, SignUpInfoType} from '../service/auth.service';
 import {useHistory} from 'react-router-dom';
+import {SignUpInfoKey, SignUpInfoType} from '../auth';
 
 const SignIn = () => {
   const history = useHistory();
@@ -21,6 +21,7 @@ const SignIn = () => {
       .then(user => {
         if (!user.signInUserSession) {
           console.info(user)
+          history.push('/')
         } else {
           console.info(user)
           alert('ログインできました')

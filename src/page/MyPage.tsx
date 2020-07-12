@@ -10,8 +10,7 @@ const MyPage = () => {
   },[])
 
   const handleSignOut = async () => {
-    await Auth.signOut().then(res => {
-      console.log(res)
+    await Auth.signOut().then(() => {
       alert('ログアウトしました')
     })
   }

@@ -1,17 +1,10 @@
 import React from 'react';
 import {Auth} from 'aws-amplify';
-import {SignUpInfoType, SignUpInfoKey} from '../service/auth.service';
-import { useHistory } from 'react-router-dom';
-import UserContext from '../context/UserContext';
+import {useHistory} from 'react-router-dom';
+import {SignUpInfoKey, SignUpInfoType} from '../auth';
 
 const SignUp = () => {
   const history = useHistory();
-  const {user, updateCurrentUser, isLoaded} = React.useContext(UserContext)
-
-  React.useEffect(() => {
-    console.log(user, isLoaded)
-  }, [])
-
   const [userInfo, setUserInfo] = React.useState<SignUpInfoType>(
     {
       authCode: '',
